@@ -6,7 +6,15 @@ import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
 
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user,LogOut } = useContext(AuthContext);
+
+  const handleLogOut = () =>{
+    LogOut()
+    .then( () =>{})
+    .catch(error =>{
+      console.error(error)
+    })
+  }
   console.log(user);
   return (
     <div className="navbar bg-base-100">
@@ -39,12 +47,12 @@ const Header = () => {
           user?.uid ?
             <>
               <span>{user?.displayName}</span>
-              <button className="btn btn-outline btn-info">Log Out</button>
+              <button onClick={handleLogOut} className="btn btn-outline btn-info">Log Out</button>
             </>
             :
             <>
               <Link to='/login'>Login</Link>
-              <Link to='/login'>Register</Link>
+              <Link to='/register'>Register</Link>
             </>
         }
 
