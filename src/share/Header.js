@@ -7,6 +7,7 @@ import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -31,9 +32,10 @@ const Header = () => {
           <li><Link>Blog</Link></li>
         </ul>
       </div>
-      {user.displName}
+      {user?.displayName}
       <div className="navbar-end">
         <a className="btn">Log out</a>
+        <Link to='/register'>register</Link>
       </div>
     </div>
   );

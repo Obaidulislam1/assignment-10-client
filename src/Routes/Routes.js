@@ -3,6 +3,7 @@ import app from "../firebase/firebase.config";
 import Main from "../LayOut/Main";
 import Courses from "../page/Courses";
 import Home from "../page/Home";
+import Registation from "../page/Registation";
 
 export const router = createBrowserRouter([
 {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
             path: '/courses',
             element: <Courses></Courses>,
             loader: () => fetch('https://assignment-10-server-obaidulislam1.vercel.app/courses')
+        },
+        {
+            path: '/register',
+            element: <Registation></Registation>
         }
     ]
 }
