@@ -17,6 +17,7 @@ const register = (email,password) =>{
 const googleSign = (Provider) =>{
     return signInWithPopup(auth, Provider)
 }
+const LogOut =
   useEffect( () =>{
    const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
         setUser(currentUser)
