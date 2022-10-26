@@ -5,6 +5,7 @@ import Courses from "../page/Courses";
 import Home from "../page/Home";
 import Login from "../page/Login";
 import Registation from "../page/Registation";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
 {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
         },
         {
             path: '/courses',
-            element: <Courses></Courses>,
+            element: <PrivateRoute><Courses></Courses></PrivateRoute>,
             loader: () => fetch('https://assignment-10-server-obaidulislam1.vercel.app/courses')
         },
         {
