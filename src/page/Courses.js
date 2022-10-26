@@ -19,7 +19,7 @@ const Courses = () => {
            <div className='w-1/4 m-4'>
            {
             categories.map(category => <p key={category.id}>
-              <Link>{category.category}</Link>
+              <Link to={`/category/${category.id}`}>{category.category}</Link>
             </p>)
            }
            </div>

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import app from "../firebase/firebase.config";
 import Main from "../LayOut/Main";
+import Category from "../page/Category";
 import Courses from "../page/Courses";
 import Home from "../page/Home";
 import Login from "../page/Login";
@@ -29,7 +30,12 @@ export const router = createBrowserRouter([
         {
             path: '/login',
             element: <Login></Login>
+        },
+        {
+            path: '/category/:id',
+            element: <Category></Category>
         }
+
     ]
 }
 ]);
