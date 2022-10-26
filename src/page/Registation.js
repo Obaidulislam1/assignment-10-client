@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
 const Registation = () => {
     const  navigate = useNavigate();
-
+    const [error,setError] = useState('');
     const {googleSign,register} = useContext(AuthContext)
 
     const googleProvider = new GoogleAuthProvider()
@@ -21,6 +22,7 @@ const Registation = () => {
         })
         .catch(error =>{
             console.error(error)
+            
         })
     }
 
@@ -38,15 +40,17 @@ const fromSubmit = event =>{
       const user = result.user;
       console.log(user);  
       navigate('/login')
+      setError('')
     })
     .catch(error =>{
         console.error(error);
+        setError(error.message);
     })
 }
 
     return (
        <div className='mt-20'>
-         <from onSubmit={fromSubmit} className="from-control w-full max-w-xs m-auto">
+         <Form onSubmit={fromSubmit} className="from-control max-w-xs w-full m-auto">
             <label className="label">
                 <span className="label-text">What is your name?</span>
             </label>
@@ -67,9 +71,9 @@ const fromSubmit = event =>{
                 <span className="label-text">Confirm password</span>
             </label>
             <input type="password" name='confirmPassword' placeholder="Confirm password" className="input input-bordered w-full max-w-xs" required/>
+        <p className='text-orange-600 mt-3'>{error}</p>
             <button type='submit' className="btn btn-active btn-ghost mt-5">Register</button>
-        </from>
-
+        </Form>
         <div className='flex justify-center'>
             <button onClick={handleGoogle}> 
                  Google SignIn</button>

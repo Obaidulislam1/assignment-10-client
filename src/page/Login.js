@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
 
 const Login = () => {
+    const [error,setError] =useState('')
     const navigate = useNavigate();
     const { login } = useContext(AuthContext)
     const loginIn = event => {
@@ -16,9 +18,11 @@ const Login = () => {
                 console.log(user);
                 navigate('/')
                 form.reset();
+                setError('');
             })
             .catch(error => {
                 console.error(error);
+                setError(error.message)
             })
     }
     return (
@@ -31,6 +35,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
             </label>
             <input type="password" name='password' placeholder="Type here password" className="input input-bordered w-full max-w-xs" required />
+            <p className='text-orange-600'>{error}</p>
             <button type='submit' className="btn btn-active btn-ghost mt-5">Login</button>
         </form>
     );
