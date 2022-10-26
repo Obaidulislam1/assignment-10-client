@@ -3,13 +3,14 @@ import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 
 
 const Registation = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const { googleSign, register,updateProfileUser } = useContext(AuthContext)
+    const { googleSign, register,updateProfileUser,mailVerification } = useContext(AuthContext)
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -42,6 +43,8 @@ const Registation = () => {
                 navigate('/login')
                 setError('')
                 userUpdate(name,photoURL)
+                verificationmail()
+                toast.success('Please check your email')
             })
             .catch(error => {
                 console.error(error);
@@ -57,6 +60,12 @@ const Registation = () => {
       updateProfileUser(profile)
         .then( () =>{})
         .catch(error => console.error(error))
+    }
+
+    const verificationmail = () =>{
+        mailVerification()
+        .then( () =>{})
+        .catch(error => console.log(error));
     }
 
     return (

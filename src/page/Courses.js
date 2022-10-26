@@ -1,19 +1,27 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import Course from './Course';
 
 const Courses = () => {
+  const [categories,setCategories] = useState([]);
+
+  useEffect( () =>{
+    fetch('https://assignment-10-server-obaidulislam1.vercel.app/category')
+    .then(res =>res.json())
+    .then(data => setCategories(data))
+  },[])
     const courses = useLoaderData();
     console.log(courses);
     return (
         <div className='md:flex w-10/12 m-auto'>
            <div className='w-1/4 m-4'>
-            <h1>Digital marketing</h1>
-            <h1>Graphics Design</h1>
-            <h1>PHP Language</h1>
-            <h1>Jquery Click</h1>
-            <h1>Al Quran</h1>
-            <h1>Robotics</h1>
+           {
+            categories.map(category => <p key={category.id}>
+              <Link>{category.category}</Link>
+            </p>)
+           }
            </div>
           <div className='grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10'>
           {
