@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import image from '../image/image-home.jpg';
-import SlickCarusel from './SlickCarusel';
 
 const Home = () => {
     const students = useLoaderData();

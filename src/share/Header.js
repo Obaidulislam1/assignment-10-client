@@ -28,7 +28,7 @@ const Header = () => {
             <li>
               <Link to='/courses'>FAQ</Link>
             </li>
-            <li><Link>Blog</Link></li>
+            <li><Link to='/blog'>Blog</Link></li>
           </ul>
         </div>
         <Link to='/' className="btn btn-ghost normal-case text-xl">Learn Academy</Link>
@@ -37,7 +37,7 @@ const Header = () => {
         <ul className="menu menu-horizontal p-0">
           <li><Link to='/courses'>Courses</Link></li>
           <li><Link>FAQ</Link></li>
-          <li><Link>Blog</Link></li>
+          <li><Link to='/blog'>Blog</Link></li>
         </ul>
       </div>
 
