@@ -4,6 +4,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaGoogle,FaGithub } from "react-icons/fa";
 
 
 
@@ -38,7 +39,6 @@ const Registation = () => {
         const name = from.name.value;
         const email = from.email.value;
         const password = from.password.value;
-        const confirmPassword = from.confirmPassword.value;
         const photoURL = from.photo.value;
         // console.log(name, email, password, confirmPassword, photoURL);
         register(email, password)
@@ -114,8 +114,8 @@ const Registation = () => {
             </Form>
             <div className='flex justify-center mt-5'>
             <div>
-               <p><button className="btn btn-outline btn-info" onClick={handleGoogle}>Google SignIn</button></p>
-                <p><button className='mt-5 btn btn-outline btn-info' onClick={githubLogin}>Github sign in</button></p>
+               <p><button className="btn btn-outline btn-info" onClick={handleGoogle}> <FaGoogle className='mr-3 text-green-300'/>  Google SignIn</button></p>
+                <p><button className='mt-5 btn btn-outline btn-info' onClick={githubLogin}><FaGithub className='mr-3 text-black'/> Github sign in</button></p>
                </div>
                 
             </div>

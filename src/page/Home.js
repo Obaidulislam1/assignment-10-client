@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import image from '../image/image-home.jpg';
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
                     <br />
                     sequoia capital Bangladesh rapid scale-up our course to increase investment in product and technology.</p>
                 <div className='flex justify-center mt-10'>
-                    <button className="btn btn-outline btn-info">explore Now</button>
+                    <button className="btn btn-outline btn-info"><Link to='/courses'>explore Now</Link></button>
                 </div>
             </div>
             </div>
