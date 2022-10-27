@@ -33,7 +33,8 @@ export const router = createBrowserRouter([
         },
         {
             path: '/category/:id',
-            element: <Category></Category>
+            element: <Category></Category>,
+            loader: ({params}) => fetch(`https://assignment-10-server-obaidulislam1.vercel.app/category/${params.id}`)
         }
 
     ]
