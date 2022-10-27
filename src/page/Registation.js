@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -10,9 +10,14 @@ import toast from 'react-hot-toast';
 const Registation = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const { googleSign, register,updateProfileUser,mailVerification } = useContext(AuthContext)
+    const { googleSign,
+         register,
+         updateProfileUser,
+         mailVerification,
+         userGithubLogin } = useContext(AuthContext)
 
-    const googleProvider = new GoogleAuthProvider()
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogle = () => {
         googleSign(googleProvider)
@@ -68,6 +73,17 @@ const Registation = () => {
         .catch(error => console.log(error));
     }
 
+    const githubLogin =() =>{
+        userGithubLogin(githubProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+        } )
+        .catch(error =>{
+            console.error(error)
+        })
+    }
+
     return (
         <div className='mt-20'>
             <Form onSubmit={fromSubmit} className="from-control max-w-xs w-full m-auto">
@@ -94,11 +110,14 @@ const Registation = () => {
                 <input type="password" name='confirmPassword' placeholder="Confirm password" className="input input-bordered w-full max-w-xs" required />
                 <p className='text-orange-600 mt-3'>{error}</p>
                 <button type='submit' className="btn btn-active btn-ghost mt-5">Register</button>
-                <p className='mt-5'><Link to='/login'>im already a member</Link></p>
+                <p className='mt-5 text-center'><Link to='/login'>im already a member</Link></p>
             </Form>
-            <div className='flex justify-center'>
-                <button className='mt-10' onClick={handleGoogle}>
-                    Google SignIn</button>
+            <div className='flex justify-center mt-5'>
+            <div>
+               <p><button className="btn btn-outline btn-info" onClick={handleGoogle}>Google SignIn</button></p>
+                <p><button className='mt-5 btn btn-outline btn-info' onClick={githubLogin}>Github sign in</button></p>
+               </div>
+                
             </div>
         </div>
     );
