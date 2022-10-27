@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Sharefile/authProvider/AuthProvider';
 
 const Login = () => {
@@ -35,6 +35,7 @@ const Login = () => {
     }
     return (
         <form onSubmit={loginIn} className="form-control w-full max-w-xs m-auto">
+            
             <label className="label">
                 <span className="label-text">Your email eddress</span>
             </label>
@@ -45,6 +46,7 @@ const Login = () => {
             <input type="password" name='password' placeholder="Type here password" className="input input-bordered w-full max-w-xs" required />
             <p className='text-orange-600'>{error}</p>
             <button type='submit' className="btn btn-active btn-ghost mt-5">Login</button>
+            <p className='mt-5'><Link to='/register'>Creat a new account ?</Link></p>
         </form>
     );
 };

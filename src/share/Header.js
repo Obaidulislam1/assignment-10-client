@@ -31,7 +31,7 @@ const Header = () => {
             <li><Link>Blog</Link></li>
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+        <Link to='/' className="btn btn-ghost normal-case text-xl">Learn Academy</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -67,7 +67,7 @@ const Header = () => {
         }
 
       </div>
-    </div>
+      <input type="checkbox" className="toggle" checked />    </div>
   );
 };
 

@@ -71,6 +71,7 @@ const Registation = () => {
     return (
         <div className='mt-20'>
             <Form onSubmit={fromSubmit} className="from-control max-w-xs w-full m-auto">
+            <h1 className='text-center'>Sign up to Learn</h1>
                 <label className="label">
                     <span className="label-text">What is your name?</span>
                 </label>
@@ -93,9 +94,10 @@ const Registation = () => {
                 <input type="password" name='confirmPassword' placeholder="Confirm password" className="input input-bordered w-full max-w-xs" required />
                 <p className='text-orange-600 mt-3'>{error}</p>
                 <button type='submit' className="btn btn-active btn-ghost mt-5">Register</button>
+                <p className='mt-5'><Link to='/login'>im already a member</Link></p>
             </Form>
             <div className='flex justify-center'>
-                <button onClick={handleGoogle}>
+                <button className='mt-10' onClick={handleGoogle}>
                     Google SignIn</button>
             </div>
         </div>
