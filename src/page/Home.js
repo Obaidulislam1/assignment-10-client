@@ -20,7 +20,6 @@ const Home = () => {
                 </div>
             </div>
             </div>
-            <h1 className='z-index'>hellow</h1>
             {/* {
                 students.map(student =><SlickCarusel key={student.id} student={student}></SlickCarusel>)
             } */}
